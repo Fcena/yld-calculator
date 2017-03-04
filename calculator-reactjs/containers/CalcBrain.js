@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
             console.log('handleNumber [' + e.target.textContent + ']');
             dispatch(actions.pickNumber(e.target.textContent));
         },
-        handleSign: (e) => { 
+        handleSign: (e) => {
             console.log('handleSign [' + e.target.textContent + ']');
             dispatch(actions.operate(mapButtonToOperation(e.target.textContent)));
         }
