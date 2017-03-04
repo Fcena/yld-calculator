@@ -8,7 +8,7 @@ function getValueFromStack(stack) {
     const first = stack.first();
     if (first) {
         return (first.action_type == types.OPERATE) ?
-                stack.pop().first().value : first.value;
+            stack.pop().first().value : first.value;
     } else {
         return 0;
     }
@@ -23,13 +23,19 @@ const mapStateToProps = (state) => {
 const mapButtonToOperation = (buttonValue) => {
     switch (buttonValue) {
         case "AC": return ops.CLEAR
-        case "÷":  return ops.DIVIDE
-        case "×":  return ops.MULTIPLY
-        case "-":  return ops.SUBTRACT
-        case "+":  return ops.ADD
-        case "=":  return ops.EQUALS
+        case "÷": return ops.DIVIDE
+        case "×": return ops.MULTIPLY
+        case "-": return ops.SUBTRACT
+        case "+": return ops.ADD
+        case "=": return ops.EQUALS
         case "+/-": return ops.NEGATE
-        case "%":  return ops.PERCENT
+        case "%": return ops.PERCENT
+        case "sqrt": return ops.SQUARE
+        case "MC": return ops.MEM_CLEAR
+        case "MR": return ops.MEM_RECALL
+        case "M-": return ops.MEM_SUB
+        case "M+": return ops.MEM_ADD
+
         default:
             console.log("undefined: " + buttonValue);
     }

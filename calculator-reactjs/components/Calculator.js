@@ -7,6 +7,12 @@ class Calculator extends Component {
             <div id="calc-pane">
                 <input type="text" value={this.props.value} readOnly={true} />
                 <div>
+                    <Button onClick={this.props.handleSign} text="MC"/>
+                    <Button onClick={this.props.handleSign} text="MR"/>
+                    <Button onClick={this.props.handleSign} text="M-"/>
+                    <Button onClick={this.props.handleSign} text="M+"/>
+                </div>
+                <div>
                     <Button onClick={this.props.handleSign} text="AC"/>
                     <Button onClick={this.props.handleSign} text="+/-"/>
                     <Button onClick={this.props.handleSign} text="%"/>
@@ -31,9 +37,10 @@ class Calculator extends Component {
                     <Button onClick={this.props.handleSign} text="+"/>
                 </div>
                 <div>
-                    <Button wide="true" onClick={this.props.handleNumber} text="0"/>
+                    <Button onClick={this.props.handleNumber} text="0"/>
                     <Button onClick={this.props.handleNumber} text="."/>
                     <Button onClick={this.props.handleSign} text="="/>
+                    <Button onClick={this.props.handleSign} text="sqrt"/>
                 </div>
             </div>
         );

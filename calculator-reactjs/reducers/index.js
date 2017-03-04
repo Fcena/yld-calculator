@@ -4,7 +4,8 @@ import * as funcs from '../functions/Operations'
 import { Stack } from 'immutable'
 
 const initialState = {
-    stack: Stack()
+    stack: Stack(),
+    memory: Stack()
 }
 
 export default function calculate(state = initialState, action) {
@@ -15,8 +16,10 @@ export default function calculate(state = initialState, action) {
         // if last action was pick number, append to that
         let first = state.stack.first();
         if (first && first.action_type == types.PICK_NUMBER) {
-            value = first.value + action.number;
-            state.stack = state.stack.pop();
+            if (!(first.value == 0 && action.number == 0)) {
+                value = first.value + action.number;
+                state.stack = state.stack.pop();
+            }
         }
         if (first && first.action_type === null) {
             state.stack = state.stack.pop();
@@ -37,7 +40,10 @@ export default function calculate(state = initialState, action) {
             }
             // if unary operator, push action onto the stack
             if (state.stack.size == 1 &&
-                (action.operation == operations.NEGATE || action.operation == operations.PERCENT)) {
+                (action.operation == operations.NEGATE ||
+                action.operation == operations.PERCENT ||
+                action.operation == operations.SQUARE
+                )) {
                 state.stack = state.stack.push({
                     'action_type': action.type,
                     'value': action.operation
